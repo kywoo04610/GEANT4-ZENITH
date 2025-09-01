@@ -1,0 +1,11 @@
+# run.mac — Run commands
+
+# (옵션) 멀티스레딩을 여기서 쓰지 않고, sim 시작 후 직접 입력하거나
+# 아래 줄을 주석 해제해서 사용하세요.
+#/run/numberOfThreads 4
+
+# 시각화 매크로 불러오기
+/control/execute vis.mac
+
+# 이벤트 실행
+/run/beamOn 100

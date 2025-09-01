@@ -1,0 +1,20 @@
+# vis.mac — Visualization setup
+
+/run/initialize
+
+/vis/open OGL 600x600-0+0
+/vis/scene/create
+/vis/sceneHandler/attach
+
+/vis/drawVolume
+/vis/scene/add/axes
+/vis/scene/add/scale 10 cm
+/vis/scene/add/trajectories smooth
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/eventID
+
+/vis/viewer/set/viewpointThetaPhi 0 0
+/vis/viewer/set/style/surface
+/vis/viewer/set/autoRefresh true
+
+/vis/scene/notifyHandlers

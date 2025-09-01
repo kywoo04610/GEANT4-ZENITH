@@ -1,0 +1,11 @@
+# run.mac — Run commands (소량 이벤트 테스트)
+
+#/run/numberOfThreads 4   # 멀티스레드 옵션 (필요시)
+
+# 시각화 매크로 불러오기
+/control/execute vis.mac
+
+# 제너레이터 기본 설정
+/gen/energy 50 GeV
+/gen/srcR 50 m
+/gen/theta 0 deg
