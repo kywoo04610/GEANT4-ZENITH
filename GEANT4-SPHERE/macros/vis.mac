@@ -1,0 +1,58 @@
+/run/initialize
+
+/vis/open OGL 800x800-0+0
+
+/vis/scene/create
+/vis/sceneHandler/attach
+
+# Detector만 보이기 (대기/월드 숨김)
+/vis/geometry/set/visibility AtmShellLV 0 false
+/vis/geometry/set/visibility AtmMotherLV 0 false
+/vis/geometry/set/visibility logicalWorld 0 false
+/vis/geometry/set/visibility physDetector 1 true
+/vis/geometry/set/colour physDetector yellow
+
+# ✅ detector를 scene에 추가
+/vis/scene/add/volume physDetector
+
+# 좌표축 & 스케일 표시
+/vis/scene/add/axes
+/vis/scene/add/scale 10 cm
+
+# --- Trajectories by particle name ---
+/vis/modeling/trajectories/create/drawByParticleName
+
+# proton = 초록
+/vis/modeling/trajectories/drawByParticleName-0/proton/setColour green
+/vis/modeling/trajectories/drawByParticleName-0/proton/setLineWidth 2
+
+# muon = 파랑
+/vis/modeling/trajectories/drawByParticleName-0/mu+/setColour blue
+/vis/modeling/trajectories/drawByParticleName-0/mu+/setLineWidth 2
+/vis/modeling/trajectories/drawByParticleName-0/mu-/setColour blue
+/vis/modeling/trajectories/drawByParticleName-0/mu-/setLineWidth 2
+
+# pion = 빨강
+/vis/modeling/trajectories/drawByParticleName-0/pi+/setColour red
+/vis/modeling/trajectories/drawByParticleName-0/pi+/setLineWidth 2
+/vis/modeling/trajectories/drawByParticleName-0/pi-/setColour red
+/vis/modeling/trajectories/drawByParticleName-0/pi-/setLineWidth 2
+
+# fallback = 회색
+/vis/modeling/trajectories/drawByParticleName-0/default/setColour grey
+/vis/modeling/trajectories/drawByParticleName-0/default/setLineWidth 1
+
+# scene 설정
+/vis/scene/add/trajectories
+/vis/scene/endOfEventAction accumulate
+/vis/scene/add/eventID
+
+# Viewer 세팅
+/vis/viewer/set/viewpointThetaPhi 45 45
+/vis/viewer/set/style surface
+/vis/viewer/set/autoRefresh true
+
+/vis/scene/notifyHandlers
+
+# 테스트용 실행 (10 이벤트)
+/run/beamOn 10
